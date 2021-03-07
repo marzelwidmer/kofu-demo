@@ -1,11 +1,11 @@
 package ch.keepcalm.demo.kofu
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
+import org.springframework.fu.kofu.reactiveWebApplication
 
-@SpringBootApplication
-class KofuDemoApplication
+val app = reactiveWebApplication {
 
-fun main(args: Array<String>) {
-	runApplication<KofuDemoApplication>(*args)
+}
+
+fun main() {
+    app.run()
 }

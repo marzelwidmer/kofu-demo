@@ -12,14 +12,41 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
+	mavenLocal()
 	mavenCentral()
+	jcenter()
+	maven("https://repo.spring.io/milestone")
+	maven("https://repo.spring.io/snapshot")
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter")
+	// KoFu
+	implementation("org.springframework.fu:spring-fu-kofu:0.5.0-SNAPSHOT")
+	// lambda based type safe validation
+	implementation("am.ik.yavi:yavi:0.5.0")
+
+	//	Jackson
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	// Reactor (Webflux / Coroutine)
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("org.springframework.boot:spring-boot-starter")
+
+	// ---------------> Test Dependencies <--------------- //
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.jetbrains.kotlin:kotlin-test")
+	testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+	// kotest
+	testImplementation("io.kotest:kotest-runner-junit5-jvm:4.4.1")
+	testImplementation ("io.kotest:kotest-assertions-core-jvm:4.4.1")
+	testImplementation ("io.kotest:kotest-property-jvm:4.4.1")
+
+	// kotlin-faker
+	testImplementation ("io.github.serpro69:kotlin-faker:1.6.0")
 }
 
 tasks.withType<KotlinCompile> {
